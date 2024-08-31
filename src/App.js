@@ -64,6 +64,7 @@ function App (props) {
   const [stateTwo, dispatchTwo] = useReducer(reducer, meat); 
   const [stateThree, dispatchThree] = useReducer(reducer, watermelon); 
   const [stateFour, dispatchFour] = useReducer(reducer, juice); 
+  const [payment, setPayment] = useState(null)
   if (pay == true) {
     payPage = <button onClick={() => {
     navigate('pay')
@@ -109,7 +110,34 @@ function App (props) {
       <h3>{resThree}</h3>
       <h3>{resFour}</h3>
       <h2>Итого: {props.resultPrice}</h2>
-      {payPage}
+      <button onClick={() => {
+       setPayment('Подождите, идет оплата...')
+       setTimeout(() => {
+        if (props.balance >= props.resultPrice) {
+          props.setBalance(props.balance - props.resultPrice)
+          setPayment('Оплата прошла успешно!')
+          props.setResultPrice(0)
+          setResOne(null)
+          setResTwo(null)
+          setResThree(null)
+          setResFour(null)
+          setTimeout(() => {
+            setPayment(null)
+         }, 2000);
+         } else {
+           setPayment('На вашем балансе недостаточно средств')
+           props.setResultPrice(0)
+          setResOne(null)
+          setResTwo(null)
+          setResThree(null)
+          setResFour(null)
+          setTimeout(() => {
+            setPayment(null)
+         }, 2000);
+         }
+       }, 2000)
+      }}>Оплатить</button>
+      <h3>{payment}</h3>
     </div> 
   ); 
 } 

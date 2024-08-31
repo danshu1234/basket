@@ -25,7 +25,7 @@ function Parent () {
             {showB}
             <Routes>
                 <Route path="/pay" element = {<PayPage resultPrice = {resultPrice} setResultPrice = {setResultPrice} balance = {balance} setBalance = {setBalance} showBalance = {showBalance} setShowBalance = {setShowBalance}/>}/>
-                <Route path="/" element = {<App resultPrice = {resultPrice} setResultPrice = {setResultPrice}/>} balance = {balance} setBalance = {setBalance}/>
+                <Route path="/" element = {<App resultPrice = {resultPrice} setResultPrice = {setResultPrice} balance = {balance} setBalance = {setBalance}/>}/>
             </Routes>
         </div>
     )
