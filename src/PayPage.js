@@ -37,17 +37,21 @@ function PayPage (props) {
             <button onClick={() => {
              setSuccesPay('Подождите, идет пополнение...')
              setTimeout(() => {
-                let superArr = num.split('')
-                if (superArr.length === 16 && updateBalance !== 0) {
-                 setSuccesPay('Пополнение прошло успешно!')
-                 props.setBalance(props.balance + updateBalance)
-                 props.setResultPrice(0)
-            } else if (updateBalance == 0) {
-                setSuccesPay('Пожалуйста, проверьте сумму')
-            }
-             else {
-                setSuccesPay('Пожалуйста, проверьте введенные данные')
-            }
+                if (num !== '') {
+                    let superArr = num.split('')
+                    if (superArr.length === 16 && updateBalance !== 0) {
+                        setSuccesPay('Пополнение прошло успешно!')
+                        props.setBalance(props.balance + updateBalance)
+                        props.setResultPrice(0)
+                   } else if (updateBalance == 0) {
+                       setSuccesPay('Пожалуйста, проверьте сумму')
+                   }
+                    else {
+                       setSuccesPay('Пожалуйста, проверьте введенные данные')
+                   }
+                } else {
+                    setSuccesPay('Пожалуйста, введите данные карты')
+                }     
         }, 2000)    
             }}>Пополнить</button>
             <h4>{succesPay}</h4>
