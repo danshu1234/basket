@@ -45,6 +45,35 @@ function App (props) {
   const [resTwo, setResTwo] = useState(null)
   const [resThree, setResThree] = useState(null)
   const [resFour, setResFour] = useState(null)
+  let delOne;
+  if (resOne !== null) {
+    delOne = <button onClick={() => {
+      setResOne(null)
+      props.setResultPrice(props.resultPrice - stateOne.price)
+    }
+    }>Удалить товар</button>
+  }
+  let delTwo;
+  if (resTwo !== null) {
+    delTwo = <button onClick={() => {
+      setResTwo(null)
+      props.setResultPrice(props.resultPrice - stateTwo.price)
+    }}>Удалить товар</button>
+  }
+  let delThree;
+  if (resThree !== null) {
+    delThree = <button onClick={() => {
+      setResThree(null)
+      props.setResultPrice(props.resultPrice - stateThree.price)
+    }}>Удалить товар</button>
+  }
+  let delFour;
+  if (resFour !== null) {
+    delFour = <button onClick={() => {
+      setResFour(null)
+      props.setResultPrice(props.resultPrice - stateFour.price)
+    }}>Удалить товар</button>
+  }
   let payPage;
   const [pay, setPay] = useState(false)
   const reducer = (state, action) => {
@@ -122,9 +151,13 @@ function App (props) {
       </ul> 
       <h2>Корзина: </h2>
       <h3>{resOne}</h3>
+      {delOne}
       <h3>{resTwo}</h3>
+      {delTwo}
       <h3>{resThree}</h3>
+      {delThree}
       <h3>{resFour}</h3>
+      {delFour}
       <h2>Итого: {props.resultPrice}</h2>
       <button onClick={() => {
        setPayment('Подождите, идет оплата...')
