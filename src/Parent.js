@@ -13,14 +13,27 @@ function Parent () {
     const [showBalance, setShowBalance] = useState(true)
     const [state, setState] = useState(0)
     const [select, setSelect] = useState('Москва')
-    let user = useRef('User')
+    const [showRegion, setShowRegion] = useState(true)
+    let reg;
+    if (showRegion == true) {
+    reg = <div>
+<select onChange={(event) => {
+               setSelect(event.target.value)
+            }}>
+                <option>Москва</option>
+                <option>Челябинск</option>
+            </select>
+    </div>
+    }
+    const [user, setUser] = useState('Гость')
     const [showUser, setShowUser] = useState(true)
     let account;
     if (showUser == true) {
-       account = <button onClick={() => {
+       account = <h3 onClick={() => {
         navigate('/account')
         setShowUser(false)
-       }}>Личный кабинет</button>
+        setShowRegion(false)
+       }} className="account">Личный кабинет</h3>
     }
     let showB;
     if (showBalance == true) {
@@ -29,24 +42,22 @@ function Parent () {
             <button className="pay_balance" onClick={() => {
                 setShowBalance(false)
                 navigate('/pay')
+                setShowRegion(false)
             }}>Пополнить баланс</button>
         </div>
     }
     return (
-        <div>
+        <div className="parent-contain">
+            <header className="header">
             {account}
-            <h2>{user.current}</h2>
-            <select onChange={(event) => {
-               setSelect(event.target.value)
-            }}>
-                <option>Москва</option>
-                <option>Челябинск</option>
-            </select>
+            <h2 className="user-parent">{user}</h2>
+            </header>
+            {reg}
             {showB}
             <Routes>
-                <Route path="/pay" element = {<PayPage resultPrice = {resultPrice} setResultPrice = {setResultPrice} balance = {balance} setBalance = {setBalance} showBalance = {showBalance} setShowBalance = {setShowBalance}/>}/>
-                <Route path="/" element = {<App resultPrice = {resultPrice} setResultPrice = {setResultPrice} balance = {balance} setBalance = {setBalance} select = {select} setSelect = {setSelect}/>}/>
-                <Route path="account" element = {<Account user = {user} state = {state} setState = {setState}/>}/>
+                <Route path="/pay" element = {<PayPage resultPrice = {resultPrice} setResultPrice = {setResultPrice} balance = {balance} setBalance = {setBalance} showBalance = {showBalance} setShowBalance = {setShowBalance} showRegion = {setShowRegion}/>}/>
+                <Route path="/" element = {<App resultPrice = {resultPrice} setResultPrice = {setResultPrice} balance = {balance} setBalance = {setBalance} select = {select} setSelect = {setSelect} showRegion = {setShowRegion}/>}/>
+                <Route path="account" element = {<Account user = {user} setUser = {setUser} setShowUser = {setShowUser} state = {state} setState = {setState} showRegion = {setShowRegion}/>}/>
             </Routes>
         </div>
     )

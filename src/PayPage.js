@@ -56,6 +56,11 @@ function PayPage (props) {
                 }     
         }, 2000)    
             }}>Пополнить</button>
+            <button onClick={() => {
+                payNavigate('/')
+                props.showRegion(true)
+                props.setShowBalance(true)
+            }}>На домашнюю</button>
             <h4>{succesPay}</h4>
             {backToHomePage}
         </div>
