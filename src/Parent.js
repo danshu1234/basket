@@ -12,6 +12,7 @@ function Parent () {
     const [balance, setBalance] = useState(0)
     const [showBalance, setShowBalance] = useState(true)
     const [state, setState] = useState(0)
+    const [select, setSelect] = useState('Москва')
     let user = useRef('User')
     const [showUser, setShowUser] = useState(true)
     let account;
@@ -35,10 +36,16 @@ function Parent () {
         <div>
             {account}
             <h2>{user.current}</h2>
+            <select onChange={(event) => {
+               setSelect(event.target.value)
+            }}>
+                <option>Москва</option>
+                <option>Челябинск</option>
+            </select>
             {showB}
             <Routes>
                 <Route path="/pay" element = {<PayPage resultPrice = {resultPrice} setResultPrice = {setResultPrice} balance = {balance} setBalance = {setBalance} showBalance = {showBalance} setShowBalance = {setShowBalance}/>}/>
-                <Route path="/" element = {<App resultPrice = {resultPrice} setResultPrice = {setResultPrice} balance = {balance} setBalance = {setBalance}/>}/>
+                <Route path="/" element = {<App resultPrice = {resultPrice} setResultPrice = {setResultPrice} balance = {balance} setBalance = {setBalance} select = {select} setSelect = {setSelect}/>}/>
                 <Route path="account" element = {<Account user = {user} state = {state} setState = {setState}/>}/>
             </Routes>
         </div>
