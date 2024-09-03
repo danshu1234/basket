@@ -21,12 +21,14 @@ function PayPage (props) {
         <div className="pay">
             <input placeholder="Введите номер карты" onChange={(event) => {
             let arr = event.target.value.split('')
-            let newArr = arr.slice(0, 4)
+            let newArr = arr.slice(0, 2)
             let result = newArr.join('')
-            if (result == '2202') {
+            if (result == '22') {
                 setCard('Мир')
-            } else if (result == '4000') {
+            } else if (result == '40') {
                 setCard('Visa')
+            } else if (result == '56'){
+                setCard('Mastercard')
             }
             setNum(event.target.value)
             }}/><span>{card}</span><br/>
