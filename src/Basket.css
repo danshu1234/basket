@@ -4,15 +4,30 @@
 
 .balance{
     margin-left: 1300px;
+    color: rgb(80, 247, 191);
 }
 
 .app{
     margin-top: -10px;
+    margin-left: 300px;
 }
 
 
 .pay_balance{
     margin-left: 1300px;
+    border-radius: 8px;
+    scale: 120%;
+    top: 130px;
+    position: absolute;
+    background-color: rgb(217, 71, 71);
+    color: aqua;
+    height: 30px;
+}
+
+.pay_balance:hover{
+    scale: 130%;
+    cursor: pointer;
+    border: 1px solid aqua;
 }
 
 .parent-contain{
@@ -21,7 +36,10 @@
 }
 
 .account{
-    color: rgb(192, 236, 236);
+   color: rgb(192, 236, 236);
+   position: relative;
+   left: -80px;
+   padding-top: 10px;
 }
 
 .account:hover{
@@ -31,9 +49,100 @@
 
 .header{
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;  
+    background-color: rgb(217, 71, 71);
+    height: 50px;
 }
 
 .user-parent{
-    margin-left: 500px;
+    margin-right: 590px;
+    padding-top: 10px;
+    color: rgb(192, 236, 236);
+}
+
+.select-region{
+    border-radius: 5px;
+    scale: 120%;
+    margin-left: 10px;
+    opacity: 0.75;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.select-region:hover{
+    cursor: pointer;
+}
+
+.product_list{
+    margin-left: 95px;
+    scale: 110%;
+    color: aqua;
+}
+
+.products-cards{
+    list-style-type: none
+}
+
+.product-card{
+    margin-top: 30px;
+}
+
+.product{
+    color: aliceblue;
+}
+
+.plus-product{
+    border-radius: 30px;
+    opacity: 0.5;
+    scale: 120%;
+}
+
+.plus-product:hover{
+    cursor: pointer;
+}
+
+.minus-product{
+    border-radius: 10px;
+    opacity: 0.5;
+    scale: 120%; 
+    margin-left: 4px;
+}
+
+.minus-product:hover{
+    cursor: pointer;
+}
+
+.add-product{
+    opacity: 0.7;
+    scale: 110%;
+    border-radius: 10px;
+    margin-left: 9px;
+}
+
+.add-product:hover{
+    cursor: pointer;
+}
+
+.no-assortiment-product{
+    color: rgb(217, 71, 71);
+}
+
+.product-no{
+    color: aliceblue;
+    text-decoration: line-through;
+}
+
+.market{
+    margin-right: 550px;
+    padding-top: 10px;
+    color: rgb(192, 236, 236);
+}
+
+.basket{
+    margin-left: 620px;
+    margin-top: -430px;
+}
+
+.basket-head{
+    color: aqua;
 }

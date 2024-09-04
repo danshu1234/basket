@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './Basket.css'
 function Account (props) {
     const navigate = useNavigate()
 let entrance;
@@ -29,6 +30,7 @@ return (
             navigate('/')
             props.showRegion(true)
             props.setShowUser(true)
+            props.setShowBalance(true)
         }}>На домашнюю</button>
         <h5>{warning}</h5>
     </div>

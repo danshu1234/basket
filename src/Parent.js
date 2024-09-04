@@ -19,7 +19,7 @@ function Parent () {
     reg = <div>
 <select onChange={(event) => {
                setSelect(event.target.value)
-            }}>
+            }} className="select-region">
                 <option>Москва</option>
                 <option>Челябинск</option>
             </select>
@@ -33,6 +33,7 @@ function Parent () {
         navigate('/account')
         setShowUser(false)
         setShowRegion(false)
+        setShowBalance(false)
        }} className="account">Личный кабинет</h3>
     }
     let showB;
@@ -50,6 +51,7 @@ function Parent () {
         <div className="parent-contain">
             <header className="header">
             {account}
+            <h2 className="market">MiniMarket</h2>
             <h2 className="user-parent">{user}</h2>
             </header>
             {reg}
@@ -57,7 +59,7 @@ function Parent () {
             <Routes>
                 <Route path="/pay" element = {<PayPage resultPrice = {resultPrice} setResultPrice = {setResultPrice} balance = {balance} setBalance = {setBalance} showBalance = {showBalance} setShowBalance = {setShowBalance} showRegion = {setShowRegion}/>}/>
                 <Route path="/" element = {<App resultPrice = {resultPrice} setResultPrice = {setResultPrice} balance = {balance} setBalance = {setBalance} select = {select} setSelect = {setSelect} showRegion = {setShowRegion}/>}/>
-                <Route path="account" element = {<Account user = {user} setUser = {setUser} setShowUser = {setShowUser} state = {state} setState = {setState} showRegion = {setShowRegion}/>}/>
+                <Route path="account" element = {<Account user = {user} setUser = {setUser} setShowUser = {setShowUser} state = {state} setState = {setState} showRegion = {setShowRegion} showBalance = {showBalance} setShowBalance = {setShowBalance}/>}/>
             </Routes>
         </div>
     )

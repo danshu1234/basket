@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './Basket.css'
 function PayPage (props) {
     const payNavigate = useNavigate()
     const [succesPay, setSuccesPay] = useState(null)
