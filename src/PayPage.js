@@ -32,15 +32,15 @@ function PayPage (props) {
                 setCard('Mastercard')
             }
             setNum(event.target.value)
-            }}/><span>{card}</span><br/>
+            }} className="card-input"/><span>{card}</span><br/>
             <input placeholder="Введите сумму" onChange={(event) => {
                  const amount = +event.target.value
                 setUpdateBalance(amount)
-            }}/><br/>
+            }} className="summ-input"/><br/>
             <button onClick={() => {
              setSuccesPay('Подождите, идет пополнение...')
              setTimeout(() => {
-                if (num !== '') {
+                if (num !== null & num !== '') {
                     let superArr = num.split('')
                     if (superArr.length === 16 && updateBalance !== 0) {
                         setSuccesPay('Пополнение прошло успешно!')
@@ -56,13 +56,13 @@ function PayPage (props) {
                     setSuccesPay('Пожалуйста, введите данные карты')
                 }     
         }, 2000)    
-            }}>Пополнить</button>
+            }} className="card-btn">Пополнить</button>
             <button onClick={() => {
                 payNavigate('/')
                 props.showRegion(true)
                 props.setShowBalance(true)
-            }}>На домашнюю</button>
-            <h4>{succesPay}</h4>
+            }} className="to-home-btn">На домашнюю</button>
+            <h4 className="succes-pay">{succesPay}</h4>
             {backToHomePage}
         </div>
     )

@@ -63,14 +63,15 @@ function App (props) {
   const [pay, setPay] = useState(false)
   const [showResult, setShowResult] = useState(false)
   const [payment, setPayment] = useState(null)
+  const [basket, setBasket] = useState('Здесь пока пусто')
   let res;
   if (showResult == true) {
-    res = <div>
-    <h2>Итого: {props.resultPrice}</h2>
+    res = <div className="result-price-contain">
+    <h2><span className="result_price_span">Итого:</span> <h3 className="result_price">{props.resultPrice}</h3></h2>
     <button onClick={() => {
      setPayment('Подождите, идет оплата...')
      setTimeout(() => {
-      if (props.balance >= props.resultPrice) {
+      if (props.balance >= props.resultPrice && props.balance !== 0) {
         props.setBalance(props.balance - props.resultPrice)
         setPayment('Оплата прошла успешно!')
         props.setResultPrice(0)
@@ -93,10 +94,11 @@ function App (props) {
        }, 2000);
        }
      }, 2000)
-    }}>Оплатить</button>
-    <h3>{payment}</h3>
+    }} className="pay_btn">Оплатить</button>
+    <h3 className="payment">{payment}</h3>
     </div>
   }
+
   if (pay == true) {
     payPage = <button onClick={() => {
     navigate('pay')
@@ -109,28 +111,28 @@ function App (props) {
       setResOne(null)
       props.setResultPrice(props.resultPrice - stateOne.price)
     }
-    }>Удалить товар</button>
+    } className="delete-btn">Удалить товар</button>
   }
   let delTwo;
   if (resTwo !== null) {
     delTwo = <button onClick={() => {
       setResTwo(null)
       props.setResultPrice(props.resultPrice - stateTwo.price)
-    }}>Удалить товар</button>
+    }} className="delete-btn">Удалить товар</button>
   }
   let delThree;
   if (resThree !== null) {
     delThree = <button onClick={() => {
       setResThree(null)
       props.setResultPrice(props.resultPrice - stateThree.price)
-    }}>Удалить товар</button>
+    }} className="delete-btn">Удалить товар</button>
   }
   let delFour;
   if (resFour !== null) {
     delFour = <button onClick={() => {
       setResFour(null)
       props.setResultPrice(props.resultPrice - stateFour.price)
-    }}>Удалить товар</button>
+    }} className="delete-btn">Удалить товар</button>
   }
   let products;
   if (props.select == 'Москва') {
@@ -143,10 +145,11 @@ function App (props) {
             dispatchOne({type: 'minus'})
           }
         }} className="minus-product">-</button>
-        <button onClick={() => {setResOne(`Товар: ${stateOne.name}, количество ${stateOne.quantity}`)
+        <button onClick={() => {setResOne(`${stateOne.name}, ${stateOne.quantity}`)
       props.setResultPrice(props.resultPrice + stateOne.price)
       setPay(true)
       setShowResult(true)
+      setBasket(null)
       }} className="add-product">Добавить в корзину</button>
         <li className="product-card"><h3 className="product">{stateTwo.name}</h3> цена: {stateTwo.price}, количество: {stateTwo.quantity}</li>
         <button onClick={() => dispatchTwo({type: 'plus'})} className="plus-product">+</button>
@@ -155,10 +158,11 @@ function App (props) {
             dispatchTwo({type: 'minus'})
           }
         }} className="minus-product">-</button> 
-        <button onClick={() => {setResTwo(`Товар: ${stateTwo.name}, количество ${stateTwo.quantity}`)
+        <button onClick={() => {setResTwo(`${stateTwo.name}, ${stateTwo.quantity}`)
       props.setResultPrice(props.resultPrice + stateTwo.price)
       setPay(true)
       setShowResult(true)
+      setBasket(null)
       }} className="add-product">Добавить в корзину</button>
         <li className="product-card"><h3 className="product">{stateThree.name}</h3> цена: {stateThree.price}, количество: {stateThree.quantity}</li>
         <button onClick={() => dispatchThree({type: 'plus'})} className="plus-product">+</button>
@@ -167,10 +171,11 @@ function App (props) {
             dispatchThree({type: 'minus'})
           }
         }} className="minus-product">-</button> 
-        <button onClick={() => {setResThree(`Товар: ${stateThree.name}, количество ${stateThree.quantity}`)
+        <button onClick={() => {setResThree(`${stateThree.name}, ${stateThree.quantity}`)
       props.setResultPrice(props.resultPrice + stateThree.price)
       setPay(true)
       setShowResult(true)
+      setBasket(null)
       }} className="add-product">Добавить в корзину</button>
         <li className="product-card"><h3 className="product">{stateFour.name}</h3> цена: {stateFour.price}, количество: {stateFour.quantity}</li>
         <button onClick={() => dispatchFour({type: 'plus'})} className="plus-product">+</button>
@@ -179,10 +184,11 @@ function App (props) {
             dispatchFour({type: 'minus'})
           }
         }} className="minus-product">-</button>  
-        <button onClick={() => {setResFour(`Товар: ${stateFour.name}, количество ${stateFour.quantity}`)
+        <button onClick={() => {setResFour(`${stateFour.name}, ${stateFour.quantity}`)
       props.setResultPrice(props.resultPrice + stateFour.price)
       setPay(true)
       setShowResult(true)
+      setBasket(null)
       }} className="add-product">Добавить в корзину</button>
       </ul>
  </div>
@@ -196,10 +202,11 @@ function App (props) {
               dispatchOne({type: 'minus'})
             }
           }} className="minus-product">-</button> 
-          <button onClick={() => {setResOne(`Товар: ${stateOne.name}, количество ${stateOne.quantity}`)
+          <button onClick={() => {setResOne(`${stateOne.name}, ${stateOne.quantity}`)
         props.setResultPrice(props.resultPrice + stateOne.price)
         setPay(true)
         setShowResult(true)
+        setBasket(null)
         }} className="add-product">Добавить в корзину</button>
           <li className="product-card"><h3 className="product">{stateTwo.name}</h3> цена: {stateTwo.price}, количество: {stateTwo.quantity}</li>
           <button onClick={() => dispatchTwo({type: 'plus'})} className="plus-product">+</button>
@@ -208,10 +215,11 @@ function App (props) {
               dispatchTwo({type: 'minus'})
             }
           }} className="minus-product">-</button> 
-          <button onClick={() => {setResTwo(`Товар: ${stateTwo.name}, количество ${stateTwo.quantity}`)
+          <button onClick={() => {setResTwo(`${stateTwo.name}, ${stateTwo.quantity}`)
         props.setResultPrice(props.resultPrice + stateTwo.price)
         setPay(true)
         setShowResult(true)
+        setBasket(null)
         }} className="add-product">Добавить в корзину</button>
           <li className="product-card"><h3 className="product-no">{stateThree.name}</h3></li><h4 className="no-assortiment-product">Товара нет в наличии</h4>
           <li className="product-card"><h3 className="product">{stateFour.name}</h3> цена: {stateFour.price}, количество: {stateFour.quantity}</li>
@@ -221,10 +229,11 @@ function App (props) {
               dispatchFour({type: 'minus'})
             }
           }} className="minus-product">-</button>  
-          <button onClick={() => {setResFour(`Товар: ${stateFour.name}, количество ${stateFour.quantity}`)
+          <button onClick={() => {setResFour(`${stateFour.name}, ${stateFour.quantity}`)
         props.setResultPrice(props.resultPrice + stateFour.price)
         setPay(true)
         setShowResult(true)
+        setBasket(null)
         }} className="add-product">Добавить в корзину</button>
         </ul>
    </div>
@@ -235,14 +244,17 @@ function App (props) {
  {products}
       <div className="basket">
       <h2 className="basket-head">Корзина </h2>
-      <h3>{resOne}</h3>
+      <h3 className="basket-none">{basket}</h3>
+      <div className="basket-list">
+      <h3 className="product-in-basket">{resOne}</h3>
       {delOne}
-      <h3>{resTwo}</h3>
+      <h3 className="product-in-basket">{resTwo}</h3>
       {delTwo}
-      <h3>{resThree}</h3>
+      <h3 className="product-in-basket">{resThree}</h3>
       {delThree}
-      <h3>{resFour}</h3>
+      <h3 className="product-in-basket">{resFour}</h3>
       {delFour}
+      </div>
       {res}
       </div>
     </div> 

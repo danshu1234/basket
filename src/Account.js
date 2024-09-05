@@ -11,12 +11,12 @@ if (showEntrence == true) {
     entrance = 'Введите свое имя, чтобы мы могли к вам обращаться!'
 }
 return (
-    <div>
-        <h2>Ваше имя: {props.user}</h2>
-        <h4>{entrance}</h4>
+    <div className="user-container">
+        <h1 className="name">Ваше имя: <span className="name-user">{props.user}</span></h1>
+        <h2 className="enter-name">{entrance}</h2>
         <input placeholder="Ваше имя" onChange={(event) => {
             setInput(event.target.value)
-        }}/>
+        }} className="name-input"/>
         <button onClick={() => {
             if (input !== null && input !== '') {
                 props.setUser(input)
@@ -25,13 +25,13 @@ return (
             } else {
                  setWarning('Введите свое имя')
             }
-        }}>Сохранить</button><br/>
+        }} className="save-name">Сохранить</button><br/>
         <button onClick={() => {
             navigate('/')
             props.showRegion(true)
             props.setShowUser(true)
             props.setShowBalance(true)
-        }}>На домашнюю</button>
+        }} className="to-home-name">На домашнюю</button>
         <h5>{warning}</h5>
     </div>
 )
