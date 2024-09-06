@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import App from "./App";
 import './Basket.css'
 import PayPage from "./PayPage";
@@ -14,6 +14,17 @@ function Parent () {
     const [state, setState] = useState(0)
     const [select, setSelect] = useState('Москва')
     const [showRegion, setShowRegion] = useState(true)
+    const [localName, setLocalName] = useState(null)
+    let username;
+    if (localName == null) {
+        username = <h2 className="user-parent">Гость</h2>
+    } else {
+        username =  <h2 className="user-parent">{localName}</h2>
+    }
+    useEffect(() => {
+      const userName = localStorage.getItem('name')
+      setLocalName(userName)
+    })
     let reg;
     if (showRegion == true) {
     reg = <div>
@@ -52,7 +63,7 @@ function Parent () {
             <header className="header">
             {account}
             <h2 className="market">MiniMarket</h2>
-            <h2 className="user-parent">{user}</h2>
+            {username}
             </header>
             {reg}
             {showB}

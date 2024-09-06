@@ -16,7 +16,7 @@ function PayPage (props) {
         payNavigate('/')
         props.setShowBalance(true)
         setUpdateBalance(0)
-        }}>Вернуться к покупкам</button>
+        }} className="back-to-shopping">Вернуться к покупкам</button>
     }
     return (
         <div className="pay">
@@ -28,9 +28,13 @@ function PayPage (props) {
                 setCard('Мир')
             } else if (result == '40') {
                 setCard('Visa')
-            } 
+            } else if (result == '54') {
+                setCard('Mastercard')
+            } else if (result == '') {
+                setCard(null)
+            }
             setNum(event.target.value)
-            }} className="card-input"/><span>{card}</span><br/>
+            }} className="card-input"/><span className="card-visible">{card}</span><br/>
             <input placeholder="Введите сумму" onChange={(event) => {
                  const amount = +event.target.value
                 setUpdateBalance(amount)

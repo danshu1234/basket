@@ -255,7 +255,7 @@ border: 2px solid white;
 }
 
 .succes-pay{
-    margin-left: 620px;
+    margin-left: 640px;
     margin-top: 30px;
     opacity: 0.6;
 }
@@ -316,5 +316,26 @@ border: 2px solid white;
 .basket-for-Chelyabinsk{
     margin-left: 620px;
     margin-top: -405.5px;
+}
+
+.card-visible{
+    margin-left: 60px;
+    scale: 1.2;
+    opacity: 0.7;
+}
+
+.back-to-shopping{
+    scale: 1.2;
+    opacity: 0.7;
+    color: green;
+    border-radius: 5px;
+    top: 65px;
+    margin-left: 680px;  
+    margin-top: 40px;
+}
+
+.warning-name{
+    margin-top: 50px;
+    opacity: 0.7;
 }
 

@@ -35,7 +35,7 @@
 //   )
 // }
 // export default App
-import React, { useReducer, useState } from "react"; 
+import React, { useEffect, useReducer, useState } from "react"; 
 import { useNavigate } from "react-router-dom";
 import './Basket.css'
 function App (props) {
@@ -272,6 +272,12 @@ function App (props) {
         </ul>
    </div>
   }
+  useEffect(() => {
+   if (resOne == null && resTwo == null && resThree == null && resFour == null && payment == null) {
+    setShowResult(false)
+    setBasket('Здесь пока пусто')
+   }
+  }, [resOne, resTwo, resThree, resFour, payment])
   return ( 
     <div className="app"> 
       <h2 className="product_list">Список товаров</h2> 

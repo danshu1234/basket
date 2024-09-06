@@ -22,6 +22,7 @@ return (
                 props.setUser(input)
                 setWarning(null)
                 setShowEntrance(false)
+                localStorage.setItem('name', input)  
             } else {
                  setWarning('Введите свое имя')
             }
@@ -32,7 +33,7 @@ return (
             props.setShowUser(true)
             props.setShowBalance(true)
         }} className="to-home-name">На домашнюю</button>
-        <h5>{warning}</h5>
+        <h5 className="warning-name">{warning}</h5>
     </div>
 )
 }
