@@ -178,7 +178,8 @@
 }
 
 .result-price-contain{
-    margin-top: 40px;
+    margin-top: 60px;
+    margin-left: 630px;
 }
 
 .result_price_span{
@@ -303,5 +304,17 @@ border: 2px solid white;
 
 .to-home-name{
     position: absolute;
-    left: 5px;
+    left: 10px;
+    scale: 1.2;
+    opacity: 0.7;
+    color: green;
+    border-radius: 5px;
+    top: 65px;
+
 }
+
+.basket-for-Chelyabinsk{
+    margin-left: 620px;
+    margin-top: -405.5px;
+}
+

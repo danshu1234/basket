@@ -28,9 +28,7 @@ function PayPage (props) {
                 setCard('Мир')
             } else if (result == '40') {
                 setCard('Visa')
-            } else if (result == '56'){
-                setCard('Mastercard')
-            }
+            } 
             setNum(event.target.value)
             }} className="card-input"/><span>{card}</span><br/>
             <input placeholder="Введите сумму" onChange={(event) => {

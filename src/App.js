@@ -64,7 +64,69 @@ function App (props) {
   const [showResult, setShowResult] = useState(false)
   const [payment, setPayment] = useState(null)
   const [basket, setBasket] = useState('Здесь пока пусто')
+  let delOne;
   let res;
+  if (resOne !== null) {
+    delOne = <button onClick={() => {
+      setResOne(null)
+      props.setResultPrice(props.resultPrice - stateOne.price)
+    }
+    } className="delete-btn">Удалить товар</button>
+  }
+  let delTwo;
+  if (resTwo !== null) {
+    delTwo = <button onClick={() => {
+      setResTwo(null)
+      props.setResultPrice(props.resultPrice - stateTwo.price)
+    }} className="delete-btn">Удалить товар</button>
+  }
+  let delThree;
+  if (resThree !== null) {
+    delThree = <button onClick={() => {
+      setResThree(null)
+      props.setResultPrice(props.resultPrice - stateThree.price)
+    }} className="delete-btn">Удалить товар</button>
+  }
+  let delFour;
+  if (resFour !== null) {
+    delFour = <button onClick={() => {
+      setResFour(null)
+      props.setResultPrice(props.resultPrice - stateFour.price)
+    }} className="delete-btn">Удалить товар</button>
+  }
+  let baskett;
+  if (props.select == 'Москва') {
+    baskett = <div className="basket">
+    <h2 className="basket-head">Корзина </h2>
+    <h3 className="basket-none">{basket}</h3>
+    <div className="basket-list">
+    <h3 className="product-in-basket">{resOne}</h3>
+    {delOne}
+    <h3 className="product-in-basket">{resTwo}</h3>
+    {delTwo}
+    <h3 className="product-in-basket">{resThree}</h3>
+    {delThree}
+    <h3 className="product-in-basket">{resFour}</h3>
+    {delFour}
+    </div>
+    {res}
+    </div>
+  } else if (props.select == 'Челябинск') {
+    baskett = <div className="basket-for-Chelyabinsk">
+    <h2 className="basket-head">Корзина </h2>
+    <h3 className="basket-none">{basket}</h3>
+    <div className="basket-list">
+    <h3 className="product-in-basket">{resOne}</h3>
+    {delOne}
+    <h3 className="product-in-basket">{resTwo}</h3>
+    {delTwo}
+    <h3 className="product-in-basket">{resThree}</h3>
+    {delThree}
+    <h3 className="product-in-basket">{resFour}</h3>
+    {delFour}
+    </div>
+    </div>
+  }
   if (showResult == true) {
     res = <div className="result-price-contain">
     <h2><span className="result_price_span">Итого:</span> <h3 className="result_price">{props.resultPrice}</h3></h2>
@@ -105,35 +167,7 @@ function App (props) {
     }}>Перейти к оплате</button>
   }
   
-  let delOne;
-  if (resOne !== null) {
-    delOne = <button onClick={() => {
-      setResOne(null)
-      props.setResultPrice(props.resultPrice - stateOne.price)
-    }
-    } className="delete-btn">Удалить товар</button>
-  }
-  let delTwo;
-  if (resTwo !== null) {
-    delTwo = <button onClick={() => {
-      setResTwo(null)
-      props.setResultPrice(props.resultPrice - stateTwo.price)
-    }} className="delete-btn">Удалить товар</button>
-  }
-  let delThree;
-  if (resThree !== null) {
-    delThree = <button onClick={() => {
-      setResThree(null)
-      props.setResultPrice(props.resultPrice - stateThree.price)
-    }} className="delete-btn">Удалить товар</button>
-  }
-  let delFour;
-  if (resFour !== null) {
-    delFour = <button onClick={() => {
-      setResFour(null)
-      props.setResultPrice(props.resultPrice - stateFour.price)
-    }} className="delete-btn">Удалить товар</button>
-  }
+  
   let products;
   if (props.select == 'Москва') {
  products = <div>
@@ -242,21 +276,8 @@ function App (props) {
     <div className="app"> 
       <h2 className="product_list">Список товаров</h2> 
  {products}
-      <div className="basket">
-      <h2 className="basket-head">Корзина </h2>
-      <h3 className="basket-none">{basket}</h3>
-      <div className="basket-list">
-      <h3 className="product-in-basket">{resOne}</h3>
-      {delOne}
-      <h3 className="product-in-basket">{resTwo}</h3>
-      {delTwo}
-      <h3 className="product-in-basket">{resThree}</h3>
-      {delThree}
-      <h3 className="product-in-basket">{resFour}</h3>
-      {delFour}
-      </div>
-      {res}
-      </div>
+ {baskett}
+ {res}
     </div> 
   ); 
 } 
