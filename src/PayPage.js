@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import Btnhome from "./Btnhome";
 import './Basket.css'
 function PayPage (props) {
     const payNavigate = useNavigate()
@@ -59,11 +61,11 @@ function PayPage (props) {
                 }     
         }, 2000)    
             }} className="card-btn">Пополнить</button>
-            <button onClick={() => {
+            <Btnhome onClick={() => {
                 payNavigate('/')
                 props.showRegion(true)
                 props.setShowBalance(true)
-            }} className="to-home-btn">На домашнюю</button>
+            }}>На домашнюю</Btnhome>
             <h4 className="succes-pay">{succesPay}</h4>
             {backToHomePage}
         </div>

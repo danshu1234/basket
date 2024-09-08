@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './Basket.css'
+import Btnhome from "./Btnhome";
 function Account (props) {
     const navigate = useNavigate()
 let entrance;
@@ -27,12 +28,12 @@ return (
                  setWarning('Введите свое имя')
             }
         }} className="save-name">Сохранить</button><br/>
-        <button onClick={() => {
+        <Btnhome onClick={() => {
             navigate('/')
             props.showRegion(true)
             props.setShowUser(true)
             props.setShowBalance(true)
-        }} className="to-home-name">На домашнюю</button>
+        }}>На домашнюю</Btnhome>
         <h5 className="warning-name">{warning}</h5>
     </div>
 )
