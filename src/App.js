@@ -64,6 +64,19 @@ function App (props) {
   const [showResult, setShowResult] = useState(false)
   const [payment, setPayment] = useState(null)
   const [basket, setBasket] = useState('Здесь пока пусто')
+  let load;
+  if (payment == 'Подождите, идет оплата...'){
+    load = <div className="contain-basket">
+    <div className="first"></div>
+    <div className="second"></div>
+    <div className="third"></div>
+    <div className="fourty"></div>
+</div>
+  } else if (payment == 'На вашем балансе недостаточно средств') {
+    load = <h3 className="pay-or-not">На вашем балансе недостаточно средств</h3>
+  } else if (payment == 'Оплата прошла успешно!'){
+    load = <h3 className="pay-or-not">Оплата прошла успешно!</h3>
+  }
   let delOne;
   let res;
   if (resOne !== null) {
@@ -155,9 +168,9 @@ function App (props) {
           setPayment(null)
        }, 2000);
        }
-     }, 2000)
+     }, 3500)
     }} className="pay_btn">Оплатить</button>
-    <h3 className="payment">{payment}</h3>
+    {load}
     </div>
   }
 

@@ -255,7 +255,19 @@ border: 2px solid white;
 }
 
 .succes-pay{
-    margin-left: 640px;
+    margin-left: 570px;
+    margin-top: 30px;
+    opacity: 0.6;
+}
+
+.check-summ{
+    margin-left: 620px;
+    margin-top: 30px;
+    opacity: 0.6;
+}
+
+.check-card{
+    margin-left: 595px;
     margin-top: 30px;
     opacity: 0.6;
 }
@@ -263,6 +275,12 @@ border: 2px solid white;
 .user-container{
     margin-left: 645px;
     margin-top: 100px;
+}
+
+.pay-or-not{
+    position: relative;
+    top: 30px;
+    opacity: 0.6;
 }
 
 .name{
@@ -337,5 +355,153 @@ border: 2px solid white;
 .warning-name{
     margin-top: 50px;
     opacity: 0.7;
+}
+
+.contain{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 10px;
+    top: 50px;
+}
+
+.contain-basket{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 10px;
+    top: 50px;
+    right: 250px;
+}
+
+
+.first{
+    right: 0;
+    position: relative;
+    background-color: rgb(218, 79, 79);
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    margin-right: 5px;
+    animation-name: first;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.second{
+    right: 0;
+    background-color: rgb(218, 79, 79);
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    margin-right: 5px;
+    animation-name: second;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.third{
+    left: 0;
+    background-color: rgb(218, 79, 79);
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    margin-right: 5px;
+    animation-name: third;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.fourty{
+    left: 0;
+    background-color: rgb(218, 79, 79);
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    animation-name: fourty;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.load{
+    position: relative;
+    bottom: 110px;
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes fourty{
+    20%{
+        left: 40px;
+    }
+    60%{
+        left: 40px;
+    }
+    80%{
+        left: 0px;
+    }
+    100%{
+        left: 0px;
+    }
+}
+
+@keyframes first{
+    20%{
+        right: 40px;
+    }
+    60%{
+        right: 40px;
+    }
+    80%{
+        right: 0px;
+    }
+    100%{
+        right: 0px;
+    }
+}
+
+@keyframes third{
+   0%{
+    left: 0px;
+   }
+   20%{
+    left: 0px;
+   }
+   40%{
+    left: 40px;
+   }
+   60%{
+    left: 0px;
+   }
+   100%{
+    left: 0px;
+   }
+}
+
+@keyframes second{
+    0%{
+        right: 0px;
+       }
+       20%{
+        right: 0px;
+       }
+       40%{
+        right: 40px;
+       }
+       60%{
+        right: 0px;
+       }
+       100%{
+        right: 0px;
+       }
 }
 

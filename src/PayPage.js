@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import Btnhome from "./Btnhome";
 import './Basket.css'
 function PayPage (props) {
@@ -9,6 +8,23 @@ function PayPage (props) {
     const [num, setNum] = useState(null)
     const [card, setCard] = useState(null)
     const [updateBalance, setUpdateBalance] = useState(0)
+    let check;
+    if (succesPay == 'Пожалуйста, проверьте введенные данные'){
+        check = <h3 className="succes-pay">Пожалуйста, проверьте введенные данные</h3>
+    } else if (succesPay == 'Пожалуйста, проверьте сумму'){
+        check = <h3 className="check-summ">Пожалуйста, проверьте сумму</h3>
+    } else if (succesPay == 'Пожалуйста, введите данные карты'){
+        check = <h3 className="check-card">Пожалуйста, введите данные карты</h3>
+    }
+    let loading;
+    if (succesPay == 'Подождите, идет пополнение...'){
+        loading = <div className="contain">
+            <div className="first"></div>
+            <div className="second"></div>
+            <div className="third"></div>
+            <div className="fourty"></div>
+        </div>
+    }
     useEffect(() => {
         localStorage.setItem('card', num)
     }, [num])
@@ -46,7 +62,7 @@ function PayPage (props) {
              setTimeout(() => {
                 if (num !== null & num !== '') {
                     let superArr = num.split('')
-                    if (superArr.length === 16 && updateBalance !== 0) {
+                    if (superArr.length === 16 && updateBalance !== 0) {    
                         setSuccesPay('Пополнение прошло успешно!')
                         props.setBalance(props.balance + updateBalance)
                         props.setResultPrice(0)
@@ -59,14 +75,15 @@ function PayPage (props) {
                 } else {
                     setSuccesPay('Пожалуйста, введите данные карты')
                 }     
-        }, 2000)    
+        }, 3500)    
             }} className="card-btn">Пополнить</button>
+            {loading}
             <Btnhome onClick={() => {
                 payNavigate('/')
                 props.showRegion(true)
                 props.setShowBalance(true)
             }}>На домашнюю</Btnhome>
-            <h4 className="succes-pay">{succesPay}</h4>
+            {check}
             {backToHomePage}
         </div>
     )
